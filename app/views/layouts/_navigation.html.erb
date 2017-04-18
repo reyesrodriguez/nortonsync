@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default ">
+<nav class="navbar navbar-default navbar-fixed-top ">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -6,7 +6,7 @@
         <span></span>
       </a>
       <div class="brand">
-       <a  href="/"><img  src="https://s3-us-west-2.amazonaws.com/nortonphotos/esquerita_400x400.jpeg"></a>
+       <a  href="/"><img  src="https://s3-us-west-2.amazonaws.com/nortonlogos/esquerita_400x400.jpeg"></a>
      </div>
     </div>
 
@@ -14,9 +14,8 @@
     <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav nav" id="menu">
         <li class="menu fade-in"><a href="/music">Music</a></li>
-        <li class="menu fade-in"><a href="/catalogs">Catalogs</a></li>
+        <!-- <li class="menu fade-in"><a href="/catalogs">Catalogs</a></li> -->
         <li class="menu fade-in"><a href="/synch">Synch</a></li>
-      	<li class="menu fade-in"><a href="/licensing">Licensing</a></li>
       </ul>
 
        <ul class="nav navbar-nav navbar-right" id="menu">
@@ -27,6 +26,9 @@
        
           <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
           <li><%= link_to '<i class="fa fa-tachometer fa-2x"></i>'.html_safe, songs_path %></li>
+          <% else %>
+        <li class="menu fade-in"><a href="/users/sign_in">Sign In</a></li>
+        
           <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

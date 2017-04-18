@@ -1,75 +1,65 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100,100italic);
-
-
 body > .container {
-  padding: 5px 15px 0;
-
-
+    padding: 5px 15px 0;
+    margin-top: 20px;
 }
 
-body, html{
-	font-size: 62.5%;
-	font-family: 100% $font-stack;
-	-webkit-font-smoothing: antialiased;
-	 background-color: #f7f7f7;
-	
+body,
+html {
+    font-size: 62.5%;
+    font-family: 100% $font-stack;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f7f7f7;
 }
 
-.cover-header h1::after{
-	@include afterheading-styles()
-}
 
+.cover-header h1::after {
+    @include afterheading-styles()
+}
 
 .cover-header p {
-	@include paragraph-styles();
+    @include paragraph-styles();
 }
 
-.home-header h1::after{
-	@include afterheading-styles()
+.home-header h1::after {
+    @include afterheading-styles()
 }
-
 
 .home-header p {
-	@include paragraph-styles();
+    @include paragraph-styles();
 }
 
-
-input{
+input {
     height: 25px;
     font-size: 1.2rem;
-    font-weight: 200;
 }
 
 h1 {
-	text-align: center;			
-	font-size: 4rem;
-	font-weight:800;
-	letter-spacing:1px;
-	color:$h1-color;
-	
+    text-align: center;
+    font-size: 4rem;
+    letter-spacing: 1px;
+    color: $h1-color;
 }
 
-
-
-a:link, a:visited {
-	color:black;
-	text-decoration: none;
+a:link,
+a:visited {
+    color: black;
+    text-decoration: none;
 }
-a:hover, a:active {
-	text-decoration: none;
+
+a:hover,
+a:active {
+    text-decoration: none;
 }
 
 a:focus {
     outline: 0;
 }
 
-
 .header {
-	text-align:center;
+    text-align: center;
 }
 
-.img{
-	width:100%;
-	height: auto;
+.img {
+    width: 100%;
+    height: auto;
 }
-

@@ -33,7 +33,7 @@ gem 'aws-sdk', '~> 1.5.7' # amazon web services gem
 gem 'paperclip'     # paperclip gem for file management
 gem 'dotenv-rails', :groups => [:development, :test]  # env variable to keep sensitive data hidden
 gem 'dotenv'
-gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'
+#gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.10'
 # Use Unicorn as the app server

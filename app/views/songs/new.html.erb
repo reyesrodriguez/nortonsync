@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class="row">
-	 <div class="col-md-10 col-md-offset-4 boxform">
+	 <div class="header-synch-home col-md-10 col-md-offset-4 boxform">
 	 	 
 			<%= form_for @song, url: {action: "create"}, html: {class:"new-form"} do |s| %>
 			<h2>New Song</h2>
@@ -12,7 +12,14 @@
 				<h3 class="boxform">Catalog</h3><%= s.text_field :catalogue, :size => 50, :placeholder => "Enter Catalogue Number"  %>
 				<h3 class="boxform">Writer</h3><%= s.text_field :writer, :size => 50, :placeholder => "Enter Writer"  %>
 				<h3 class="boxform">Publisher</h3><%= s.text_field :publisher, :size => 50, :placeholder => "Enter Publisher"  %>
-				<h3 class="boxform">Theme</h3><%= s.text_field :theme, :size => 50, :placeholder => "Enter theme, sound a like etc..."  %><br><br>
+				<h3 class="boxform">Tag</h3>
+      <%= s.text_field :all_tags, placeholder: "Tags separated with comma"%>
+				<h3 class="boxform">Theme</h3><%= s.text_field :theme, :size => 50, :placeholder => "Enter theme, sound a like etc..."  %>
+				<h3 class="boxform">Genre </h3><%= s.text_field :genre, :size => 50, :placeholder => "Enter Genre..."  %>
+				<h3 class="boxform">Mood </h3><%= s.text_field :mood, :size => 50, :placeholder => "Enter Mood..."  %>
+
+				<h3 class="boxform">Publishing </h3><%= s.text_field :publishing, :size => 50, :placeholder => "Enter whether is a Master or Publishing..."  %><br><br>
+				<h3 class="boxform">Audio URL </h3><%= s.text_field :audiourl, :size => 50, :placeholder => "Enter Audio URL"  %>
 				<%= s.submit "Create" %><br><br>
 				<%end%>
 				<button><%= link_to 'Back To Dashboard', songs_path %></button>

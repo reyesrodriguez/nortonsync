@@ -1,9 +1,10 @@
 <div class="container">
 
 <div class="row">
-	 <div class="col-md-8 col-md-offset-2">
+	 <div class="header-synch-home col-md-8 col-md-offset-2">
 		 <table>
 			<tr>
+			<th><h5> audio </h5></th>
 			<th><h5> title </h5></th>
 			<th><h5> artist </h5></th>
 			<th><h5> writer </h5></th>
@@ -12,20 +13,29 @@
 			</tr>
 
 			<tr>
+				
+			<td><audio controls="controls">
+  				<source src="<%= @song.audiourl %>" type="audio/ogg" />
+  				<source src="<%= @song.audiourl %>" type="audio/mpeg" />
+  				<source src="<%= @song.audiourl %>" type="audio/wav" />
+				Your browser does not support the audio element.
+				</audio></td>
 			<td><%= @song.title %></td>
 			<td><%= @song.artist %></td>
 			<td><%= @song.writer %></td>
 			<td><%= @song.publisher %></td>
 			<td><%= @song.theme %></td>
+
 			</tr>
 			
 			</table>
-
+			<%if current_user.admin? %>
 			<button><%= link_to 'Update', edit_song_path(@song) %></button>
 
 			<button><%= link_to 'Destroy', song_path(@song),
               method: :delete,
               data: { confirm: 'Are you sure? This cannot be undone!' } %></button>
+			<% end %>
 
             <button><%= link_to 'Back To Dashboard', songs_path %></button>
 	 </div>

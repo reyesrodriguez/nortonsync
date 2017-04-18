@@ -1,67 +1,130 @@
-h3 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: $h3-color;
-}
-
-.home-header {
-    background-color: #ffd8cc;
-    height: 600px;
-}
-
-.header-synch {
-    margin-top: 50px;
-}
-
-.wrap-info > p {
-    margin-top: 50px;
-}
-
-.services {
-    padding: 25px;
-    height: 600px;
-    background-color: #FAFAFA;
-}
-
-.home-services h3::after {
-    height: 1px;
-    margin: 1.5rem auto 1rem;
-    width: 5rem;
-    content: '';
-    display: block;
-}
-
-.home-services p {
-    color: $p_color;
-    margin: 0 auto;
-    letter-spacing: .2rem;
-    max-width: 35rem;
-    font-size: 1.7rem;
-    line-height: 1.8;
-    text-align: center;
-}
-
-@media(max-width:768px) {
-    .wrap-info p {
-        font-size: 1.2rem;
-        margin-top: 20px;
-    }
-    .home-services h3::after {
-        height: 1px;
-        margin: 1rem auto 1rem;
-        width: 2rem;
-        content: '';
-        display: block;
-    }
-    .home-services p {
-        color: $p_color;
-        margin: 0 auto;
-        letter-spacing: .2rem;
-        max-width: 70rem;
-        font-size: 1.2rem;
-        line-height: 1;
-        text-align: center;
-    }
-}
+ h2 {
+     text-align: center;
+     letter-spacing: 1px;
+     color: $h3-color;
+ }
+ 
+ h3 {
+     text-align: center;
+     font-size: 2rem;
+     letter-spacing: 1px;
+     color: $h3-color;
+ }
+ 
+ .headerh1 {
+     font-size: 6rem;
+     letter-spacing: 1px;
+     color: white;
+ }
+ 
+ .row {
+     margin-right: 0px;
+     margin-left: 0px;
+ }
+ 
+ .home-header {
+     background: url("a-bones-roof.jpg") no-repeat;
+     background-size: cover;
+     background-color: black;
+     height: 834px;
+     padding-top: 100px;
+ }
+ 
+ .home-header p {
+     color: white;
+ }
+ 
+ .header-synch {
+     margin-top: 100px;
+ }
+ 
+ .header-synch-home {
+     margin-top: 100px;
+ }
+ 
+ .wrap-info > p {
+     margin-top: 50px;
+     background-color: black;
+     opacity: .60;
+     /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+     filter: alpha(opacity=70);
+     /* IE lt 8 */
+     -ms-filter: "alpha(opacity=30)";
+     /* IE 8 */
+     -khtml-opacity: .70;
+     /* Safari 1.x */
+     -moz-opacity: .70;
+     /* FF lt 1.5, Netscape */
+     font-size: 16px;
+ }
+ 
+ .services {
+     padding: 25px;
+     height: 600px;
+     background-color: #fff;
+ }
+ 
+ .services-home {
+     margin-top: 50px;
+ }
+ 
+ .home-services h3::after {
+     height: 1px;
+     margin: 1.5rem auto 1rem;
+     width: 5rem;
+     content: '';
+     display: block;
+ }
+ 
+ .home-services p {
+     color: $p_color;
+     margin: 0 auto;
+     letter-spacing: .2rem;
+     max-width: 35rem;
+     font-size: 1.7rem;
+     line-height: 1.5;
+     text-align: center;
+ }
+ 
+ @media(max-width:768px) {
+     .navbar-fixed-bottom,
+     .navbar-fixed-top {
+         border-radius: 0;
+     }
+     .navbar-fixed-bottom,
+     .navbar-fixed-top {
+         position: fixed;
+         right: 0;
+         left: 0;
+         z-index: 1030;
+     }
+     .navbar {
+         margin-bottom: 0px;
+     }
+     .home-header {
+         background: url("a-bones-roof.jpg") no-repeat center center fixed;
+         background-color: #ffd8cc;
+         height: 834px;
+         padding-top: 100px;
+     }
+     .wrap-info p {
+         font-size: 1.2rem;
+         margin-top: 10px;
+     }
+     .home-services h3::after {
+         height: 1px;
+         margin: 1rem auto 1rem;
+         width: 2rem;
+         content: '';
+         display: block;
+     }
+     .home-services p {
+         color: $p_color;
+         margin: 0 auto;
+         letter-spacing: .2rem;
+         max-width: 70rem;
+         font-size: 1.2rem;
+         line-height: 1;
+         text-align: center;
+     }
+ }

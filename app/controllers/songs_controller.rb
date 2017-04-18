@@ -3,10 +3,12 @@ class SongsController < ApplicationController
  require 'will_paginate/array'
 
  def index
- 		if params[:search]
- 	@songs = Song.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
- 		else 
- 	@songs = Song.paginate(:page => params[:page], :per_page => 10)
+ 	if params[:search]
+ 		@songs = Song.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+ 		# @songs = Song.tagged_with(params[:tag])
+ 	else 
+ 		@songs = Song.paginate(:page => params[:page], :per_page => 10)
+
 	end
  end
 
@@ -58,7 +60,7 @@ end
 
  private
  	def song_params
- 		params.require(:song).permit(:title, :artist, :writer, :publisher, :theme, :page)
+ 		params.require(:song).permit(:title, :artist, :writer, :publisher, :theme, :page, :publishing, :mood, :genre, :audiourl, :all_tags)
  	end
 
 

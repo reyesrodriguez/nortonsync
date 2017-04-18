@@ -5,9 +5,8 @@
 				<div class="cover-header">
 					<h1 class="header-synch">MUSIC</h1>
 					<div class="mini-dashboard">
- 						<%if current_user.admin? %>
+ 						<%if current_user && current_user.admin? %>
  							<button><%= link_to "Add new Artist", new_artist_path %></button>
- 							
  						<% end %>
  					</div><br>	
 					<div class="gallery">

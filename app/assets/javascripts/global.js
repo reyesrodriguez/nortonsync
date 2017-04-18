@@ -37,3 +37,14 @@ $(document).ready(function() {
 setTimeout(function() {
     $('#flash').fadeOut();
 }, 700);
+
+var mn = $(".navbar");
+    mns = ".main-nav-scrolled";
+
+$(window).scroll(function() {
+    if ($(this).scrollTop() ){
+        mn.addClass(mns);
+    } else {
+        mn.removeClass(mns);
+    }
+});

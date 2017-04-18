@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-2">
+    <div class="header-synch-home col-md-6 col-md-offset-2">
 
       <div align="center">
-        <h3>Contact Us!</h3>
+        <h2>Contact Us!</h2>
 
         <%= simple_form_for @message, url: contact_path do |message_form| %>
-        <%= message_form.input :name, :required => true, label: "Name" %>
-        <%= message_form.input :email, :required => true, label: "Email" %>
-        <%= message_form.input :content, :required => true, label: "Message" %>
+        <h3>Name<%= message_form.text_field :name, :required => true, label: "Name" %></h3>
+        <h3>Email<%= message_form.text_field :email, :required => true, label: "Email" %></h3>
+        <h3>Message <%= message_form.text_field :content, :size => 50, :required => true, label: "Message" %></h3>
       <div>
         <br>
         <%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %>

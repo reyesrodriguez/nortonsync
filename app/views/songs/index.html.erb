@@ -15,9 +15,19 @@
                     <%= link_to "Add New Artist", new_artist_path %>
                 </li>
             </ul>
+			<% end %>
+
+				<%if current_user.admin? %>
+			<h4>Import Songs!</h4>
+			<%= form_tag import_songs_path, mulitpart: true do %>
+				<%= file_field_tag :file %>
+				<%= submit_tag "Import CSV" %>
+			<% end %>
+			<% end %>
+
         </div>
-		<% end %>
-		
+
+  
 	<div class="row">
 		<div class="col-md-12 songlist-page">
 			
@@ -26,7 +36,9 @@
 				<h3><label for="search-by">Search By</label></h3>
 					<h4><select name="search_by" id="search-by">
 						<option value="title">Title</option>
+						<%if current_user.admin? %>
 						<option value="writer">Writer</option>
+						<% end %>
 						<option value="artist">Artist</option>
 						<option value="publisher">Publisher</option>
 						<option value="theme">Theme</option>
@@ -40,40 +52,42 @@
 			<% else %>
   				<p class="hidden">There are no songs containing the term(s) <%= params[:search] %>.</p>
 			<% end %>
-
-			<%if current_user.admin? %>
-			<h4>Import Songs!</h4>
-			<%= form_tag import_songs_path, mulitpart: true do %>
-				<%= file_field_tag :file %>
-				<%= submit_tag "Import CSV" %>
-			<% end %>
-			<% end %>
 		
 			
 			<div class="table-responsive">
 				<table class="table-hover table-condensed">
 					<tr class="title-header">
+						<th><h3> Audio </h3></th>
 						<th><h3> Title </h3></th>
 						<th><h3> Artist </h3></th>
-						<th><h3> Writer </h3></th>
-						<th><h3> Publisher </h3></th>
-						<th><h3> Theme </h3></th>
+						<th><h3> Genre</h3></th>
+						<th><h3> Catalogue</h3></th>
+						<th><h3> writer </h3></th>
+						<th><h3> Master </h3></th>
+						<th><h3> Publishing </h3></th>
+
 						</tr>
 
 						<% @songs.each do |song| %>
 						<tr class="title-header">
-						<td><%= song.title %></td>
+						<td><audio controls="controls">
+  				<source src="<%= song.audiourl %>" type="audio/ogg" />
+  				<source src="<%= song.audiourl %>" type="audio/mpeg" />
+  				<source src="<%= song.audiourl %>" type="audio/wav" />
+				Your browser does not support the audio element.
+				</audio></td>
+						<td><%= link_to song.title, song_path(song) %></td>
 						<td><%= song.artist %></td>
-						<td><%= song.writer %></td>
-						<td><%= song.publisher %></td>
-						<td><%= song.theme %></td>
-						<td><button class="button button-show"><%= link_to 'Show', song_path(song) %></button></td>
-      					<td><button class="button button-update"><%= link_to 'Update', edit_song_path(song) %></button></td>
-					</tr>
-					
+						<td><%= song.genre %></td>
+						<td><%= song.catalogue %></td>
+						<td><%= song.writer%></td>
+						<td><%= song.publishing %></td>
+
 						<% end %>
+					</tr>
 
 				</table><br><br>
+				
 				<div class="digg_pagination">
     				<div class="page_info">
       					<%= page_entries_info @songs %>
@@ -88,5 +102,7 @@
 
 	</div><!--end of row -->
 </div>
+
+
 
 
