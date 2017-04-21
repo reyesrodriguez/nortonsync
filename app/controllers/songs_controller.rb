@@ -3,18 +3,28 @@ class SongsController < ApplicationController
  require 'will_paginate/array'
 
  def index
- 	if params[:search]
- 		@songs = Song.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
- 		# @songs = Song.tagged_with(params[:tag])
- 	else 
- 		@songs = Song.paginate(:page => params[:page], :per_page => 10)
+ 		if params[:tag]
+ 			@songs = Song.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
+ 			
+ 		else if params[:search]
+ 			@songs = Song.search(params[:search]).paginate(:page => params[:page], :per_page => 20)
+ 		else
+ 			@songs = Song.paginate(:page => params[:page], :per_page => 20)
+ 	
+ 		end
+ 		
+ 		end	
 
-	end
  end
 
  def import 
+ 	if params[:file].present?
  	Song.import(params[:file])
 	redirect_to songs_path, notice: "Songs Imported!"
+	else 
+    flash[:error] = "No File Chosen"
+    redirect_to songs_path
+end
 end
 
  def show 

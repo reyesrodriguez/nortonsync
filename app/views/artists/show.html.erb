@@ -8,7 +8,7 @@
 				<div class="item artist-image"><%= image_tag @artist.image.url(:med) %>
 				</div>
 				<div class="artist-player">
-			<%= audio_tag @artist.song, :type => "mp3/audio", :controls => true, :autoplay => true %>
+			<%= audio_tag @artist.song, :type => "mp3/audio", :controls => true, :autoplay => true, :id => "no-link" %>
 			</div>
 
 			</div>

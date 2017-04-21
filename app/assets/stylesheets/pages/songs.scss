@@ -81,6 +81,14 @@ h4>input {
     background: rgb(240, 255, 255);
 }
 
+input.btn{
+    padding-bottom: 25px;
+}
+
+.songlist-page {
+    padding-left:0;
+    padding-right:0;
+}
 .boxform {
     text-align: left;
 }
@@ -146,6 +154,21 @@ audio::-webkit-media-controls-panel {
 .tags-cloud {
   margin-top: 16px;
   padding: 14px;
+  border: solid 1px;
+  margin-bottom: 16px;
+}
+
+.tags-cloud_a a {
+    border: solid orange 2px;
+    border-radius: 10%;
+    font-size: 16px;
+    padding: 5px;
+    background-color:#f7f7f7;
+
+}
+
+.tags-cloud_a {
+    padding-bottom:30px;
 }
 
 .top-pad {

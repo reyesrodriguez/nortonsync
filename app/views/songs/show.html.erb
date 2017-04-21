@@ -15,9 +15,9 @@
 			<tr>
 				
 			<td><audio controls="controls">
-  				<source src="<%= @song.audiourl %>" type="audio/ogg" />
-  				<source src="<%= @song.audiourl %>" type="audio/mpeg" />
-  				<source src="<%= @song.audiourl %>" type="audio/wav" />
+  				<source id="no-link" src="<%= @song.audiourl %>" type="audio/ogg" />
+  				<source id="no-link" src="<%= @song.audiourl %>" type="audio/mpeg" />
+  				<source id="no-link" src="<%= @song.audiourl %>" type="audio/wav" />
 				Your browser does not support the audio element.
 				</audio></td>
 			<td><%= @song.title %></td>
@@ -25,7 +25,7 @@
 			<td><%= @song.writer %></td>
 			<td><%= @song.publisher %></td>
 			<td><%= @song.theme %></td>
-
+			<td><%= @song.all_tags%></td>
 			</tr>
 			
 			</table>

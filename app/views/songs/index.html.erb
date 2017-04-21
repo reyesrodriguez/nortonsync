@@ -18,35 +18,47 @@
 			<% end %>
 
 				<%if current_user.admin? %>
-			<h4>Import Songs!</h4>
+			<h4>Import Songs (only csv files)!</h4>
 			<%= form_tag import_songs_path, mulitpart: true do %>
-				<%= file_field_tag :file %>
+				<%= file_field_tag :file, accept: 'text/csv' %>
 				<%= submit_tag "Import CSV" %>
 			<% end %>
 			<% end %>
+			<% if flash[:error].present? %>
+
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+    </div>
+<% end %>
 
         </div>
 
-  
-	<div class="row">
-		<div class="col-md-12 songlist-page">
-			
-
- 			<%= form_tag songs_path, :method => "get" do %>
-				<h3><label for="search-by">Search By</label></h3>
-					<h4><select name="search_by" id="search-by">
+        <div class="col-md-12 tags-cloud glassy-bg">
+        	<div class="col-md-12 tags-cloud_a ">
+  			<h4>Search By Tags</h4>
+  			<% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
+    		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  			<% end %>
+  		</div>
+  			<hr>
+  		<div class="col-md-12 ">	
+  			<h4>Search Our Music Catalog</h4>
+  			<%= form_tag songs_path, :method => "get" do %>
+				<!-- 	<h4><select name="search_by" id="search-by">
 						<option value="title">Title</option>
-						<%if current_user.admin? %>
-						<option value="writer">Writer</option>
-						<% end %>
 						<option value="artist">Artist</option>
-						<option value="publisher">Publisher</option>
-						<option value="theme">Theme</option>
-					</select></h4><br>
+					</select></h4><br> -->
 				<%= text_field_tag :search, params[:search], class: "form-control"%><br>
-				<%= submit_tag "Search", class: "btn btn-primary" %>
+				<%= submit_tag "Search", class: "btn" %>
 	  		<% end %>
+	  	</div>
+		
 
+
+  
+			<div class="col-md-12 songlist-page">
+			
 			<% if @songs.present? %>
   				<%= render @songs.reverse %>
 			<% else %>
@@ -62,7 +74,6 @@
 						<th><h3> Artist </h3></th>
 						<th><h3> Genre</h3></th>
 						<th><h3> Catalogue</h3></th>
-						<th><h3> writer </h3></th>
 						<th><h3> Master </h3></th>
 						<th><h3> Publishing </h3></th>
 
@@ -71,16 +82,15 @@
 						<% @songs.each do |song| %>
 						<tr class="title-header">
 						<td><audio controls="controls">
-  				<source src="<%= song.audiourl %>" type="audio/ogg" />
-  				<source src="<%= song.audiourl %>" type="audio/mpeg" />
-  				<source src="<%= song.audiourl %>" type="audio/wav" />
+  				<source id="no-link" src="<%= song.audiourl %>" type="audio/ogg" />
+  				<source id="no-link" src="<%= song.audiourl %>" type="audio/mpeg" />
+  				<source id="no-link" src="<%= song.audiourl %>" type="audio/wav" />
 				Your browser does not support the audio element.
 				</audio></td>
 						<td><%= link_to song.title, song_path(song) %></td>
 						<td><%= song.artist %></td>
 						<td><%= song.genre %></td>
 						<td><%= song.catalogue %></td>
-						<td><%= song.writer%></td>
 						<td><%= song.publishing %></td>
 
 						<% end %>
@@ -99,8 +109,8 @@
 		
 			</div><!--end of table div -->
 		</div><!--end of div -->
-
-	</div><!--end of row -->
+	</div> <!--end of glassy div -->
+	<!--end of row -->
 </div>
 
 

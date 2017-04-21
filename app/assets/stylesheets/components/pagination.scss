@@ -1,6 +1,8 @@
 .digg_pagination {
   background: white;
   cursor: default;
+  margin-right: 250px;
+
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
     padding: 0.2em 0.5em;
@@ -13,9 +15,11 @@
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #2e6ab1;
+    background: orange;
     color: white;
-    border: 1px solid #2e6ab1; }
+    border: solid orange 1px;
+    border-radius: 10%;
+    font-size: 16px; }
   .digg_pagination a {
     text-decoration: none;
     color: #105cb6;
@@ -30,10 +34,12 @@
     width: auto;
     margin-bottom: 0.7em;
     text-align: center;
+    font-size: 12px;
+    margin-left:36%;
 }
     .digg_pagination .page_info b {
       color: #000033;
-      background: #6aa6ed;
+      background: orange;
       padding: 0.1em 0.25em; }
   .digg_pagination:after {
     content: ".";
@@ -50,4 +56,10 @@
         text-align: center;
         width: auto;
         margin-left: 36%;
+    }
+
+    .pagination_info a {
+        border: solid orange 1px;
+        border-radius: 10%;
+        font-size: 16px;
     }
