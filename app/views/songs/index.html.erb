@@ -5,7 +5,24 @@
         <!-- /#sidebar-wrapper -->
 
 <div class="container">
+
  <div class="nav-second">
+ 	<div class="col-md-6">
+					<table class="table-hover table-condensed">
+					<tr class="title-header">
+						<th><h3> Favorites Section </h3></th>
+					</tr>
+	  		<% @fav.each do |fave| %>
+	  		<tr class="title-header">
+	  		<h4><td><%= fave.song.title %></td></h4>
+	  		<% if current_user %>
+  			<h4><td><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></td></h4>
+			<% end %>
+	  		<% end %>
+	  	</tr>
+	  </table>
+
+	  		</div>
 		<%if current_user.admin? %>
             <ul class="nav-dash">
                 <li >
@@ -54,24 +71,7 @@
 	  		<% end %>
 	  	</div>
 			
-			<div class="col-md-12">
-					<table class="table-hover table-condensed">
-					<tr class="title-header">
-						<th><h3> Audio </h3></th>
-						<th><h3> Title </h3></th>
-						<th><h3> Favorites </h3></th>
-					</tr>
-	  		<% @fav.each do |fave| %>
-	  		<tr class="title-header">
-	  		<h4><td><%= fave.song.audiourl %></td></h4>
-	  		<h4><td><%= fave.song.title %></td></h4>
-	  		<% if current_user %>
-  			<h4><td><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></td></h4>
-			<% end %>
-	  		<% end %>
-	  	</tr>
 
-	  		</div>
 	  		
 
 	  		
@@ -97,7 +97,7 @@
 						<th><h3> Genre</h3></th>
 						<th><h3> Catalogue</h3></th>
 						<th><h3> Master </h3></th>
-						<th><h3> Publishing </h3></th>
+						<th><h3> Add To Favorites </h3></th>
 
 						</tr>
 
@@ -115,8 +115,7 @@
 						<td><%= song.catalogue %></td>
 						<td><%= song.publishing %></td>
 						<td><% if current_user %>
-  <%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %>
-  <%= link_to "unfavorite", favorite_song_path(song.id, type: "unfavorite"), method: :put %>
+  <button><%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %></button>
 <% end %></td>
 
 						<% end %>
