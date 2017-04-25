@@ -8,7 +8,32 @@
         <%= simple_form_for @message, url: contact_path do |message_form| %>
         <h3>Name<%= message_form.text_field :name, :required => true, label: "Name" %></h3>
         <h3>Email<%= message_form.text_field :email, :required => true, label: "Email" %></h3>
-        <h3>Message <%= message_form.text_field :content, :size => 50, :required => true, label: "Message" %></h3>
+        <h3>Message <%= message_form.text_field :content, :required => true, label: "Name", :id => "favo", :value => " ", :size => "30X3" %></h3>
+
+       
+
+       
+        <table class="">
+          <tr class="">
+            <th><h3> Artist </h3></th>
+            <th><h3> Title </h3></th>
+            <th><h3> Favorites </h3></th>
+          </tr>
+        <% @fav.each do |fave| %>
+        <tr class="">
+        <td><p id="favesongs"><%= fave.song.artist %><br></p></td>
+        <td><p id="favesongs"><%= fave.song.title %><br></p></td>
+        <% if current_user %>
+        <h4><td><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></td></h4>
+      <% end %>
+        <% end %>
+      </tr>
+        <a href="#" class="favo">Add To Email</a>
+      </table>
+
+  
+        
+      
       <div>
         <br>
         <%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %>
@@ -20,4 +45,12 @@
   </div>
 </div>
 </div>
+
+<script>
+$(document).on("click",".favo",function(event){
+    $("input#favo").val($("p#favesongs").text());
+});
+</script>
+
+
 

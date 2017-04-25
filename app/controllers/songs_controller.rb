@@ -30,7 +30,7 @@ end
 end
 
  def show 
- 	
+ 	@fav = FavoriteSong.find_by(params[:title])
  	@song = Song.find_by_id params[:id]
 
  	if @song.blank?
@@ -72,7 +72,7 @@ end
  end
 
  def favorite
- 	@song = Song.find_by_id params[:id]
+ 	@song = Song.find_by_id(params[:id])
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @song
@@ -88,10 +88,13 @@ end
     end
 end
 
+
+
  private
  	def song_params
  		params.require(:song).permit(:title, :artist, :writer, :publisher, :theme, :page, :publishing, :mood, :genre, :audiourl, :all_tags, :type)
  	end
+
 
 
 

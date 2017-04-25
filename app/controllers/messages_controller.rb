@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
 
 	def new
+		@fav = FavoriteSong.all
+		@song = Song.all
 		@message = Message.new
 	end
 
 	def create
+		@fav = FavoriteSong.all
+		@song = Song.all
 		@message = Message.new(message_params)
 
 		if @message.valid?
@@ -16,10 +20,13 @@ class MessagesController < ApplicationController
 		end
 	end
 
+
+
 	private
 
 		def message_params 
 			params.require(:message).permit(:name, :email, :content)
+
 		end
 
 	end

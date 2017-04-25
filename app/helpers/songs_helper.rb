@@ -10,4 +10,14 @@ module SongsHelper
     	yield(tag, classes[index.round])
   	end
 end
+
+def fave
+   @fav.each do |fave| 
+   
+      fave.song.title 
+         if current_user 
+      link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put 
+      end 
+     end 
+   end
 end
