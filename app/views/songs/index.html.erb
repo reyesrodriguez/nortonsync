@@ -53,11 +53,32 @@
 				<%= submit_tag "Search", class: "btn" %>
 	  		<% end %>
 	  	</div>
-		
+			
+			<div class="col-md-12">
+					<table class="table-hover table-condensed">
+					<tr class="title-header">
+						<th><h3> Audio </h3></th>
+						<th><h3> Title </h3></th>
+						<th><h3> Favorites </h3></th>
+					</tr>
+	  		<% @fav.each do |fave| %>
+	  		<tr class="title-header">
+	  		<h4><td><%= fave.song.audiourl %></td></h4>
+	  		<h4><td><%= fave.song.title %></td></h4>
+	  		<% if current_user %>
+  			<h4><td><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></td></h4>
+			<% end %>
+	  		<% end %>
+	  	</tr>
 
+	  		</div>
+	  		
+
+	  		
 
   
 			<div class="col-md-12 songlist-page">
+
 			
 			<% if @songs.present? %>
   				<%= render @songs.reverse %>
@@ -66,6 +87,7 @@
 			<% end %>
 		
 			
+
 			<div class="table-responsive">
 				<table class="table-hover table-condensed">
 					<tr class="title-header">
@@ -92,6 +114,10 @@
 						<td><%= song.genre %></td>
 						<td><%= song.catalogue %></td>
 						<td><%= song.publishing %></td>
+						<td><% if current_user %>
+  <%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", favorite_song_path(song.id, type: "unfavorite"), method: :put %>
+<% end %></td>
 
 						<% end %>
 					</tr>

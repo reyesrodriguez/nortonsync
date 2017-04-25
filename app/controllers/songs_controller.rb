@@ -3,6 +3,8 @@ class SongsController < ApplicationController
  require 'will_paginate/array'
 
  def index
+
+ 	@fav = FavoriteSong.all
  		if params[:tag]
  			@songs = Song.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
  			
@@ -28,6 +30,7 @@ end
 end
 
  def show 
+ 	
  	@song = Song.find_by_id params[:id]
 
  	if @song.blank?
@@ -68,9 +71,26 @@ end
  	redirect_to songs_path
  end
 
+ def favorite
+ 	@song = Song.find_by_id params[:id]
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @song
+      redirect_to :back, notice: 'You favorited #{@song.title}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@song)
+      redirect_to :back, notice: 'Unfavorited #{@song.title}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+end
+
  private
  	def song_params
- 		params.require(:song).permit(:title, :artist, :writer, :publisher, :theme, :page, :publishing, :mood, :genre, :audiourl, :all_tags)
+ 		params.require(:song).permit(:title, :artist, :writer, :publisher, :theme, :page, :publishing, :mood, :genre, :audiourl, :all_tags, :type)
  	end
 
 

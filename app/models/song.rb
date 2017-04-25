@@ -2,6 +2,11 @@ class Song < ActiveRecord::Base
 
 has_many :taggings
 has_many :tags, through: :taggings
+belongs_to :user
+
+ 
+has_many :favorite_songs 
+has_many :favorited_by, through: :favorite_songs, source: :user
 
 	require 'csv'
    

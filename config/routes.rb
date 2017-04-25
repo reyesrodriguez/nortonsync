@@ -25,6 +25,7 @@ Rails.application.routes.draw do
    get '/contact', to: 'messages#new'
    post '/contact', to: 'messages#create'
    get 'tags/:tag', to: 'songs#index', as: "tag"
+   get '/favorites', to: 'songs#favorite'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -37,6 +38,11 @@ Rails.application.routes.draw do
   resources :users
   resources :songs do 
   collection { post :import}
+  end
+  resources :songs do
+    member do
+      put :favorite
+    end
   end
 
   # Example resource route with options:

@@ -26,6 +26,10 @@
 			<td><%= @song.publisher %></td>
 			<td><%= @song.theme %></td>
 			<td><%= @song.all_tags%></td>
+			<td><% if current_user %>
+  <%= link_to "favorite",   favorite_song_path(@song, type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", favorite_song_path(@song, type: "unfavorite"), method: :put %>
+<% end %></td>
 			</tr>
 			
 			</table>
