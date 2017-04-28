@@ -47,12 +47,12 @@
 
 	  				<% @fav.each do |fave| %>
 	  				<tr class="title-header">
-	  			<h4><td><audio controls="controls">
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/ogg" />
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/mpeg" />
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/wav" />
+	  					<td><audio controls="controls">
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/ogg" />
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/mpeg" />
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/wav" />
 				Your browser does not support the audio element.
-				</audio></td></h4>
+				</audio></td>
 	  			<h4><td><%= fave.song.artist %></td></h4>
 	  			<h4><td><%= fave.song.title %></td></h4>
 	  				<% if current_user %>
