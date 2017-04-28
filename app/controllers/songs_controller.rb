@@ -43,6 +43,7 @@ end
  end
 
  def create 
+  
  	@song = Song.new(song_params)
  	if @song.save
  		redirect_to :action => 'show', :id => @song.id

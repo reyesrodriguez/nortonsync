@@ -5,7 +5,9 @@
 				  <h5 class="">Explore Norton!</h5>
 				  <div>
 				    <a href="http://www.nortonrecords.com/" target="_blank"><p class="explore">nortonrecords.com</p></a>
+				    <% if current_user %>
 				    <a href="/contact" target="_blank"><p class="explore" >Contact Us</p></a>
+				    <% end %>
              <a href="/users/sign_up" target="_blank"><p class="explore" >Sign Up</p></a>
             <!-- <a href="/log-in" target="_blank"><p class="explore">Admin</p></a> -->
         	</div>

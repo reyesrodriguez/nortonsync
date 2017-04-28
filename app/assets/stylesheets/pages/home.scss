@@ -23,7 +23,7 @@
  }
  
  .home-header {
-     background: url("a-bones-roof.jpg") no-repeat;
+     background: url("https://s3.amazonaws.com/imagesnortonsync/a-bones-roof-bff1c1eaec9ac1e541ec44d0453bd751434338934578d1241f7a28d0d96b9d22.jpg") no-repeat;
      background-size: cover;
      background-color: black;
      height: 834px;
@@ -35,11 +35,13 @@
  }
  
  .header-synch {
-     margin-top: 100px;
+     margin-top: 60px;
+
  }
  
  .header-synch-home {
      margin-top: 100px;
+     margin-bottom: 70px;
  }
  
  .wrap-info > p {
@@ -59,13 +61,13 @@
  }
  
  .services {
-     padding: 25px;
+     padding: 10px;
      height: 600px;
      background-color: #fff;
  }
  
  .services-home {
-     margin-top: 50px;
+     margin-top: 20px;
  }
  
  .home-services h3::after {
@@ -81,8 +83,8 @@
      margin: 0 auto;
      letter-spacing: .2rem;
      max-width: 35rem;
-     font-size: 1.7rem;
-     line-height: 1.5;
+     font-size: 2rem;
+     line-height: 1;
      text-align: center;
  }
  
@@ -123,7 +125,7 @@
          margin: 0 auto;
          letter-spacing: .2rem;
          max-width: 70rem;
-         font-size: 1.2rem;
+         font-size: 1.5rem;
          line-height: 1;
          text-align: center;
      }

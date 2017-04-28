@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   
   get 'songs/index'
 
-  get 'songs/create'
+  get 'songs/create', to: 'songs#new'
+  get 'songs/create', to: 'songs#create'
 
   devise_for :admins
   devise_for :users
@@ -13,7 +14,12 @@ Rails.application.routes.draw do
    devise_scope :user do
     get '/register', to: 'devise/registrations#new', as: :register
     get '/log-in', to: 'devise/sessions#new', as: :login
+    get '/sign-out', to: 'devise/sessions#destroy', as: :delete
+    get '/sign-out', to: 'devise/sessions#destroyFav', as: :deleteFav
   end
+
+
+
 
   # You can have the root of your site routed with "root"
    root 'pages#home'

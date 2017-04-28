@@ -3,7 +3,7 @@
 <div class="row">
 	 <div class="header-synch-home col-md-10 col-md-offset-4 boxform">
 	 	 
-			<%= form_for @song, url: {action: "create"}, html: {class:"new-form"} do |s| %>
+			<%= form_for @song, html: {class:"new-form"} do |s| %>
 			<h2>New Song</h2>
 				<h3 class="boxform">Title</h3>
 				<%= s.text_field :title, :size => 50, :placeholder => "Enter Title"  %>

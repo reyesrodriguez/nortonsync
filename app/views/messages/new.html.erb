@@ -1,54 +1,49 @@
 <div class="container">
   <div class="row">
-    <div class="header-synch-home col-md-6 col-md-offset-2">
+    <div class="header-synch-home col-md-12 form-group">
+      
+        <div class="col-md-9 col-md-offset-2 form-group">
+          <div align="center">
+            <h2>Get In Touch!</h2>
 
-      <div align="center">
-        <h2>Contact Us!</h2>
-
-        <%= simple_form_for @message, url: contact_path do |message_form| %>
-        <h3>Name<%= message_form.text_field :name, :required => true, label: "Name" %></h3>
-        <h3>Email<%= message_form.text_field :email, :required => true, label: "Email" %></h3>
-        <h3>Message <%= message_form.text_field :content, :required => true, label: "Name", :id => "favo", :value => " ", :size => "30X3" %></h3>
-
-       
-
-       
-        <table class="">
+        <table class="review-box">
           <tr class="">
+            <h4><a href="#" class="favo">REVIEW AND ADD TO EMAIL</a></h4>
             <th><h3> Artist </h3></th>
             <th><h3> Title </h3></th>
             <th><h3> Favorites </h3></th>
           </tr>
         <% @fav.each do |fave| %>
         <tr class="">
-        <td><p id="favesongs"><%= fave.song.artist %><br></p></td>
-        <td><p id="favesongs"><%= fave.song.title %><br></p></td>
-        <% if current_user %>
-        <h4><td><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></td></h4>
-      <% end %>
+        <td><h5 id="favesongs"><%= fave.song.artist %><br></h5></td>
+        <td><h5 id="favesongs"><%= fave.song.title %><br></h5></td>
+        
+        <td><h5><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></h4></td>
+     
         <% end %>
       </tr>
-        <a href="#" class="favo">Add To Email</a>
       </table>
+    </div>
+    <div align="center">
+        <%= simple_form_for @message, url: contact_path do |message_form| %>
+        <h3>Name</h3><h3><%= message_form.text_field :name, :required => true, label: "Name" %></h3>
+        <h3>Email</h3><h3><%= message_form.text_field :email, :required => true, label: "Email" %></h3>
+        <h3>Message </h3><h3><%= message_form.text_field :content, :required => true, label: "Name", :id => "favo", :value => " ", :size => "30X3" %></h3>
 
-  
-        
-      
-      <div>
         <br>
-        <%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %>
-      </div>
+     <%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %>
+    
       <% end %>
       <br>
     </div>
-
+</div>
   </div>
 </div>
 </div>
 
 <script>
 $(document).on("click",".favo",function(event){
-    $("input#favo").val($("p#favesongs").text());
+    $("input#favo").val($("h4#favesongs").text());
 });
 </script>
 
