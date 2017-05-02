@@ -4,7 +4,7 @@ class SongsController < ApplicationController
 
  def index
 
- 	@fav = FavoriteSong.all
+ 	@fav = current_user.favorite_songs.all
  		if params[:tag]
  			@songs = Song.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
  			
@@ -30,7 +30,7 @@ end
 end
 
  def show 
- 	@fav = FavoriteSong.find_by(params[:title])
+ 	@fav = current_user.favorite_songs.find_by(params[:title])
  	@song = Song.find_by_id params[:id]
 
  	if @song.blank?
@@ -64,8 +64,10 @@ end
  end
 
  def destroy
+  @fav = current_user.favorite_songs.all
  	@song = Song.find params[:id]
  	@song.destroy
+  @fav.destroy
  	
  	flash[:alert]="Song '#{@song.title}' by '#{@song.artist}' was deleted"
 
