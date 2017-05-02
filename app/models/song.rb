@@ -14,7 +14,7 @@ has_many :favorited_by, through: :favorite_songs, source: :user
 	
 
 def self.search(search)
-  where("artist ILIKE ? OR title ILIKE ? OR writer ILIKE ? OR publisher ILIKE ? OR theme ILIKE ?","%#{search}%", "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").order("artist asc")
+  where("artist ILIKE ? OR title ILIKE ? OR writer ILIKE ? OR publishing ILIKE ? OR theme ILIKE ? OR catalogue ILIKE ?","%#{search}%", "%#{search}%","%#{search}%", "%#{search}%","%#{search}%","%#{search}%").order("artist asc")
 
 end
 

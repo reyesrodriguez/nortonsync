@@ -47,7 +47,12 @@
 
 	  				<% @fav.each do |fave| %>
 	  				<tr class="title-header">
-	  			<h4><td><%= fave.song.audiourl %></td></h4>
+	  			<h4><td><audio controls="controls">
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/ogg" />
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/mpeg" />
+  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/wav" />
+				Your browser does not support the audio element.
+				</audio></td></h4>
 	  			<h4><td><%= fave.song.artist %></td></h4>
 	  			<h4><td><%= fave.song.title %></td></h4>
 	  				<% if current_user %>
@@ -105,9 +110,8 @@
 						<th><h3> Audio </h3></th>
 						<th><h3> Title </h3></th>
 						<th><h3> Artist </h3></th>
-						<th><h3> Genre</h3></th>
-						<th><h3> Catalogue</h3></th>
-						<th><h3> Master </h3></th>
+						<th><h3> Catalog</h3></th>
+						<th><h3> Publishing </h3></th>
 						<th><h3> Add To Favorites </h3></th>
 
 						</tr>
@@ -122,7 +126,6 @@
 				</audio></td>
 						<td><%= link_to song.title, song_path(song) %></td>
 						<td><%= song.artist %></td>
-						<td><%= song.genre %></td>
 						<td><%= song.catalogue %></td>
 						<td><%= song.publishing %></td>
 						<td><% if current_user %>
