@@ -20,28 +20,28 @@
   				<source id="no-link" src="<%= @song.audiourl %>" type="audio/wav" />
 				Your browser does not support the audio element.
 				</audio></td>
-			<td><%= @song.title %></td>
-			<td><%= @song.artist %></td>
-			<td><%= @song.writer %></td>
-			<td><%= @song.publisher %></td>
-			<td><%= @song.theme %></td>
-			<td><%= @song.all_tags%></td>
-			<td><% if current_user %>
-  <%= link_to "favorite",   favorite_song_path(@song, type: "favorite"), method: :put %>
-  <%= link_to "unfavorite", favorite_song_path(@song, type: "unfavorite"), method: :put %>
-<% end %></td>
+				<td><%= @song.title %></td>
+				<td><%= @song.artist %></td>
+				<td><%= @song.writer %></td>
+				<td><%= @song.publisher %></td>
+				<td><%= @song.theme %></td>
+				<td><%= @song.all_tags%></td>
+				<td><% if current_user %>
+  				<%= link_to "favorite",   favorite_song_path(@song, type: "favorite"), method: :put %>
+  				<%= link_to "unfavorite", favorite_song_path(@song, type: "unfavorite"), method: :put %>
+				<% end %></td>
 			</tr>
 			
-			</table>
-			<%if current_user.admin? %>
-			<button><%= link_to 'Update', edit_song_path(@song) %></button>
+		</table>
+				<%if current_user.admin? %>
+					<button><%= link_to 'Update', edit_song_path(@song) %></button>
 
-			<button><%= link_to 'Destroy', song_path(@song),
+					<button><%= link_to 'Destroy', song_path(@song),
               method: :delete,
               data: { confirm: 'Are you sure? This cannot be undone!' } %></button>
-			<% end %>
+				<% end %>
 
-            <button><%= link_to 'Back To Dashboard', songs_path %></button>
+            		<button><%= link_to 'Back To Dashboard', songs_path %></button>
 	 </div>
  </div>
 </div>

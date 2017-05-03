@@ -1,13 +1,10 @@
 
-
-        <!-- Sidebar -->
-       
-        <!-- /#sidebar-wrapper -->
+        <!-- Dashboard for Sync Site. If you are an Admin You can upload csv file and or delete objects. -->
 
 <div class="container">
 
  <div class="nav-second">
- 	
+ 	    <!-- If you are Admin (if boolean set to true in Users table) this will show in index page in songs. -->
  		<div class="col-md-12">
  			<%if current_user.admin? %>
             	<ul class="nav-dash">
@@ -35,80 +32,89 @@
 				<% end %>
 
 			</div>
+
+			<!-- This is the favorite songs by current user feature, it could be styled to be a playlist. -->
 				
  				<div class="col-md-9">
 					<table class="table-hover table-condensed">
-					<tr class="title-header">
-						<th></th>
-						<th><h4> Artist </h4></th>
-						<th><h4> Title </h4></th>
-					</tr>
-					<% if current_user %>
+						<tr class="title-header">
+							<th></th>
+							<th><h4> Artist </h4></th>
+							<th><h4> Title </h4></th>
+						</tr>
 
-	  				<% @fav.each do |fave| %>
-	  				<tr class="title-header">
+						<% if current_user %>
+
+	  					<% @fav.each do |fave| %>
+	  					<tr class="title-header">
 
 	  					<td><audio controls="controls">
 
-  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/ogg" />
-  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/mpeg" />
-  				<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/wav" />
-				Your browser does not support the audio element.
+  						<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/ogg" />
+  						<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/mpeg" />
+  						<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/wav" />
+						Your browser does not support the audio element.
 
-				</audio></td>
+						</audio></td>
 
-	  			<h4><td><%= fave.song.artist %></td></h4>
-	  			<h4><td><%= fave.song.title %></td></h4>
-	  				<% if current_user %>
-  				<h4><td><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></td></h4>
-					<% end %>
-					<% end %>
-	  				<% end %>
-	  				</tr>
-	  				</table>
+	  					<h4><td><%= fave.song.artist %></td></h4>
+	  					<h4><td><%= fave.song.title %></td></h4>
+	  					<% if current_user %>
+  						<h4><td><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></td></h4>
+						<% end %>
+						<% end %>
+	  					<% end %>
+	  					</tr>
+	  					</table>
 
 	  			</div>
 
-	  		<div class="col-md-3 contact-index title-header review-box">
-	  			<h4>Review and send us an email</h4>
+	  			<!-- Contact Us box -->
 
-	  			<button><a href="/contact" target="_blank"><h5>Contact Us</h5></a></button>
+	  			<div class="col-md-3 contact-index title-header review-box">
+	  				<h4>Review and send us an email</h4>
+
+	  				<button><a href="/contact" target="_blank"><h5>Contact Us</h5></a></button>
+	  			</div>
 	  		</div>
-	  	</div>
+
+	  		<!-- Search by Tags feature. -->
 
         <div class="col-md-12 tags-cloud glassy-bg">
-        	<div class="col-md-12 tags-cloud_a ">
-  			<h4>Search By Tags</h4>
-  			<% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
-    		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  			<% end %>
-  		</div>
-  			<hr>
+        		<div class="col-md-12 tags-cloud_a ">
+  					<h4>Search By Tags</h4>
+  						<% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
+    					<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  						<% end %>
+  				</div>
+  				<hr>
+
+  				<!-- Search by Attributes feature. -->
   		<div class="col-md-12 ">	
-  			<h4>Search Our Music Catalog</h4>
-  			<%= form_tag songs_path, :method => "get" do %>
-				<!-- 	<h4><select name="search_by" id="search-by">
-						<option value="title">Title</option>
-						<option value="artist">Artist</option>
-					</select></h4><br> -->
-				<%= text_field_tag :search, params[:search], class: "form-control"%><br>
-				<%= submit_tag "Search", class: "btn" %>
-	  		<% end %>
+  					<h4>Search Our Music Catalog</h4>
+  						<%= form_tag songs_path, :method => "get" do %>
+						<!-- 	<h4><select name="search_by" id="search-by">
+								<option value="title">Title</option>
+								<option value="artist">Artist</option>
+								</select></h4><br> -->
+						<%= text_field_tag :search, params[:search], class: "form-control"%><br>
+						<%= submit_tag "Search", class: "btn" %>
+	  					<% end %>
 	  	</div>
 			
 
-	  		<div class="col-md-12 songlist-page">
+	  	<div class="col-md-12 songlist-page">
 
 			
-			<% if @songs.present? %>
-  				<%= render @songs.reverse %>
-			<% else %>
-  				<p class="hidden">There are no songs containing the term(s) <%= params[:search] %>.</p>
-			<% end %>
+						<% if @songs.present? %>
+  						<%= render @songs.reverse %>
+						<% else %>
+  						<p class="hidden">There are no songs containing the term(s) <%= params[:search] %>.</p>
+						<% end %>
 		
-			
+			<!-- This is the main songs table for index. -->
 
-			<div class="table-responsive">
+		<div class="table-responsive">
 				<table class="table-hover table-condensed">
 					<tr class="title-header">
 						<th><h3> Audio </h3></th>
@@ -123,18 +129,18 @@
 						<% @songs.each do |song| %>
 						<tr class="title-header">
 						<td><audio controls="controls">
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/ogg" />
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/mpeg" />
-  				<source id="no-link" src="<%= song.audiourl %>" type="audio/wav" />
-				Your browser does not support the audio element.
-				</audio></td>
+  						<source id="no-link" src="<%= song.audiourl %>" type="audio/ogg" />
+  						<source id="no-link" src="<%= song.audiourl %>" type="audio/mpeg" />
+  						<source id="no-link" src="<%= song.audiourl %>" type="audio/wav" />
+						Your browser does not support the audio element.
+						</audio></td>
 						<td><%= link_to song.title, song_path(song) %></td>
 						<td><%= song.artist %></td>
 						<td><%= song.catalogue %></td>
 						<td><%= song.publishing %></td>
 						<td><% if current_user %>
-  <button><%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %></button>
-<% end %></td>
+  						<button><%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %></button>
+						<% end %></td>
 
 						<% end %>
 					</tr>
