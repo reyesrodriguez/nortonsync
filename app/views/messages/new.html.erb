@@ -2,40 +2,44 @@
   <div class="row">
     <div class="header-synch-home col-md-12 form-group">
       
-        <div class="col-md-9 col-md-offset-2 form-group">
-          <div align="center">
-            <h2>Get In Touch!</h2>
-
-        <table class="review-box">
-          <tr class="">
-            <h4><a href="#" class="favo">REVIEW AND ADD TO EMAIL</a></h4>
+        <div class="col-md-12 form-group">
+          <div class="col-md-6">
+           
+<div class="table-responsive">
+        <table class="table-hover table-condensed">
+          <tr class="title-header">
             <th><h3> Artist </h3></th>
             <th><h3> Title </h3></th>
-            <th><h3> Favorites </h3></th>
+      
           </tr>
         <% @fav.each do |fave| %>
         <tr class="">
-        <td><h5 id="favesongs"><%= fave.song.artist %><br></h5></td>
-        <td><h5 id="favesongs"><%= fave.song.title %><br></h5></td>
+        <td><h4 id="favesongs"><%= fave.song.artist %><br></h4></td>
+        <td><h4 id="favesongs"><%= fave.song.title %><br></h4></td>
         
-        <td><h5><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></h4></td>
+        
      
         <% end %>
       </tr>
       </table>
     </div>
-    <div align="center">
+      <h5><a href="#" class="favo">Add to request</a></h5>
+    </div>
+    <div class="col-md-6">
         <%= simple_form_for @message, url: contact_path do |message_form| %>
-        <h3>Name</h3><h3><%= message_form.text_field :name, :required => true, label: "Name" %></h3>
-        <h3>Email</h3><h3><%= message_form.text_field :email, :required => true, label: "Email" %></h3>
-        <h3>Message </h3><h3><%= message_form.text_field :content, :required => true, label: "Name", :id => "favo", :value => " ", :size => "30X3" %></h3>
+        <h4>Name</h4><h4><%= message_form.text_field :name, :required => true, label: "Name" %></h4>
+        <h4>Email</h4><h4><%= message_form.text_field :email, :required => true, label: "Email" %></h4>
+        <h4>Message </h4><h4><%= message_form.text_field :content, :required => true, label: "Name", :id => "favo", :value => " ", :size => "30X3" %></h4>
 
         <br>
-     <%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %>
+     <h3><%= message_form.button :submit, "Send Message", :class=> "btn btn-primary" %></h3>
     
       <% end %>
       <br>
     </div>
+</div>
+<div align="center">
+<h5><%= link_to 'Back To Dashboard', songs_path %></h5>
 </div>
   </div>
 </div>

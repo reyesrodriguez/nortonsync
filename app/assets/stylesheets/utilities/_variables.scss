@@ -1,7 +1,9 @@
 /* fonts */
 
-$font-stack:'Helvetica LT W01 Light';
-$font-songlist: 4em;
+
+
+$font-stack:'Roboto, sans-serif';
+$font-songlist: 2em;
 
 /* colors */
 
@@ -10,6 +12,8 @@ $h1-color:#000000;
 $h3-color:#000000;
 $button-size: 3.5rem;
 $transition: .3s;
+
+
 @mixin paragraph-styles() {
     color: $p_color;
     max-width: 100rem;

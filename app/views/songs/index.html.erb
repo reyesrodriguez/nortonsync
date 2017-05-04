@@ -34,10 +34,11 @@
 			</div>
 
 			<!-- This is the favorite songs by current user feature, it could be styled to be a playlist. -->
-				
- 				<div class="col-md-9">
-					<table class="table-hover table-condensed">
-						<tr class="title-header">
+			<div class="col-md-12">	
+ 				<div class="col-md-6">
+ 				<div class="table-responsive">
+				<table class="table-hover table-condensed">
+					<tr class="title-header">
 							<th></th>
 							<th><h4> Artist </h4></th>
 							<th><h4> Title </h4></th>
@@ -48,7 +49,7 @@
 	  					<% @fav.each do |fave| %>
 	  					<tr class="title-header">
 
-	  					<td><audio controls="controls">
+	  					<td class="audiocol"><audio controls="controls" class="audiocol">
 
   						<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/ogg" />
   						<source id="no-link" src="<%= fave.song.audiourl %>" type="audio/mpeg" />
@@ -60,23 +61,25 @@
 	  					<h4><td><%= fave.song.artist %></td></h4>
 	  					<h4><td><%= fave.song.title %></td></h4>
 	  					<% if current_user %>
-  						<h4><td><button><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></button></td></h4>
+  						<h4><td><%= link_to "unfavorite", favorite_song_path(fave.song.id, type: "unfavorite"), method: :put %></td></h4>
 						<% end %>
 						<% end %>
 	  					<% end %>
 	  					</tr>
 	  					</table>
+	  				</div>
 
 	  			</div>
 
 	  			<!-- Contact Us box -->
 
-	  			<div class="col-md-3 contact-index title-header review-box">
+	  			<div class="col-md-6 contact-index  ">
 	  				<h4>Review and send us an email</h4>
 
-	  				<button><a href="/contact" target="_blank"><h5>Contact Us</h5></a></button>
+	  				<a href="/contact" target="_blank" class="btn"><h5>Contact Us</h5></a>
 	  			</div>
 	  		</div>
+	  	</div>
 
 	  		<!-- Search by Tags feature. -->
 
@@ -121,14 +124,14 @@
 						<th><h3> Title </h3></th>
 						<th><h3> Artist </h3></th>
 						<th><h3> Catalog</h3></th>
-						<th><h3> Publishing </h3></th>
+						<%if current_user.admin? %><th><h3> Publishing </h3></th><%end%>
 						<th><h3> Add To Favorites </h3></th>
 
 						</tr>
 
 						<% @songs.each do |song| %>
 						<tr class="title-header">
-						<td><audio controls="controls">
+						<td class="audiocol"><audio controls="controls" class="audiocol">
   						<source id="no-link" src="<%= song.audiourl %>" type="audio/ogg" />
   						<source id="no-link" src="<%= song.audiourl %>" type="audio/mpeg" />
   						<source id="no-link" src="<%= song.audiourl %>" type="audio/wav" />
@@ -137,9 +140,9 @@
 						<td><%= link_to song.title, song_path(song) %></td>
 						<td><%= song.artist %></td>
 						<td><%= song.catalogue %></td>
-						<td><%= song.publishing %></td>
+						<%if current_user.admin? %><td><%= song.publishing %></td><%end%>
 						<td><% if current_user %>
-  						<button><%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %></button>
+  						<%= link_to "favorite",   favorite_song_path(song.id, type: "favorite"), method: :put %>
 						<% end %></td>
 
 						<% end %>

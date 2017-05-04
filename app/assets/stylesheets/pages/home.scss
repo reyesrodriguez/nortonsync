@@ -81,11 +81,15 @@
  .home-services p {
      color: $p_color;
      margin: 0 auto;
-     letter-spacing: .2rem;
-     max-width: 35rem;
-     font-size: 2rem;
-     line-height: 1;
+     // letter-spacing: .2rem;
+     // max-width: 40rem;
+     // font-size: 1.5rem;
+     // line-height: 1;
      text-align: center;
+     letter-spacing: .1rem;
+    font-size: 2rem;
+    line-height: 1.5;
+    text-align: center;
  }
  
  @media(max-width:768px) {

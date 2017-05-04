@@ -14,6 +14,10 @@ td {
     font-size: 1rem;
 }
 
+.audiocol {
+    max-width:100px;
+}
+
 .title-header {
     h3 {
         font-size: $font-songlist;
@@ -128,7 +132,7 @@ input {
     font-weight: 200;
 }
 audio {
-    width:250px;
+    min-width:100%;
 }
 audio::-internal-media-controls-download-button {
     display:none;
@@ -198,4 +202,5 @@ audio::-webkit-media-controls-panel {
 .contact-index{
     text-align: center;
     margin:auto 0;
+    padding-top:30px;
 }
